@@ -496,6 +496,7 @@ function HomePage() {
 function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [secretCode, setSecretCode] = useState("");
   const [isRegister, setIsRegister] = useState(false);
   const [loading, setLoading] = useState(false);
   const auth = useAuth();
@@ -512,7 +513,7 @@ function AdminLoginPage() {
     setLoading(true);
     try {
       if (isRegister) {
-        await auth.register(email, password);
+        await auth.register(email, password, secretCode);
         toast.success("Compte créé avec succès !");
       } else {
         await auth.login(email, password);
@@ -565,6 +566,22 @@ function AdminLoginPage() {
                 data-testid="admin-password-input"
               />
             </div>
+            {isRegister && (
+              <div>
+                <Label htmlFor="secretCode" className="text-white">Code secret</Label>
+                <Input
+                  id="secretCode"
+                  type="password"
+                  value={secretCode}
+                  onChange={(e) => setSecretCode(e.target.value)}
+                  className="bg-[#262626] border-[#333] text-white mt-1"
+                  placeholder="Code fourni par l'administrateur"
+                  required
+                  data-testid="admin-secret-input"
+                />
+                <p className="text-xs text-gray-500 mt-1">Demandez le code au propriétaire</p>
+              </div>
+            )}
             <Button
               type="submit"
               className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white py-6"
