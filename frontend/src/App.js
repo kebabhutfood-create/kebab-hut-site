@@ -1,33 +1,32 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "@/App.css";
 import { Phone, MapPin, Clock, ChevronRight, Menu, X, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-// Restaurant Info
-const RESTAURANT_INFO = {
-  name: "Kebab Hut",
-  tagline: "Le Meilleur Kebab de La Rochelle",
-  address: "7 Rue Verdière, 17000 La Rochelle",
-  phone: "09 83 51 01 17",
-  phoneLink: "tel:+33983510117",
-  googleMapsLink: "https://www.google.com/maps/dir/?api=1&destination=7+Rue+Verdiere,+17000+La+Rochelle",
-  rating: "4.7",
-  reviews: "686",
-  priceRange: "1-10 €",
-  schedule: [
-    { day: "Lundi", hours: "11:00-14:30, 17:30-02:30" },
-    { day: "Mardi", hours: "11:00-14:30, 17:30-02:30" },
-    { day: "Mercredi", hours: "11:00-14:30, 17:30-02:30" },
-    { day: "Jeudi", hours: "11:30-14:30, 17:30-02:30" },
-    { day: "Vendredi", hours: "11:00-15:00, 17:30-02:30" },
-    { day: "Samedi", hours: "11:00-02:30" },
-    { day: "Dimanche", hours: "11:00-02:30" },
-  ]
-};
+// Restaurant Info Constants
+const RESTAURANT_NAME = "Kebab Hut";
+const RESTAURANT_TAGLINE = "Le Meilleur Kebab de La Rochelle";
+const RESTAURANT_ADDRESS = "7 Rue Verdière, 17000 La Rochelle";
+const RESTAURANT_PHONE = "09 83 51 01 17";
+const PHONE_LINK = "tel:+33983510117";
+const MAPS_LINK = "https://www.google.com/maps/dir/?api=1&destination=7+Rue+Verdiere,+17000+La+Rochelle";
+const RATING = "4.7";
+const REVIEWS = "686";
+const PRICE_RANGE = "1-10 €";
 
-// Menu Categories
+// Schedule Data
+const SCHEDULE = [
+  { day: "Lundi", hours: "11:00-14:30, 17:30-02:30" },
+  { day: "Mardi", hours: "11:00-14:30, 17:30-02:30" },
+  { day: "Mercredi", hours: "11:00-14:30, 17:30-02:30" },
+  { day: "Jeudi", hours: "11:30-14:30, 17:30-02:30" },
+  { day: "Vendredi", hours: "11:00-15:00, 17:30-02:30" },
+  { day: "Samedi", hours: "11:00-02:30" },
+  { day: "Dimanche", hours: "11:00-02:30" },
+];
+
+// Categories
 const CATEGORIES = [
   { id: "kebabs", name: "Kebabs", icon: "🥙" },
   { id: "burgers", name: "Burgers", icon: "🍔" },
@@ -37,49 +36,70 @@ const CATEGORIES = [
   { id: "boissons", name: "Boissons", icon: "🥤" },
 ];
 
-// Menu Items
-const MENU_ITEMS = {
-  kebabs: [
-    { id: 1, name: "Menu Le Basique", description: "Kebab de poulet mariné aux 4 épices, cuit à la flamme de pierre de lave, pain frais maison, sauce au choix", price: "11,80 €", image: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80", popular: true },
-    { id: 2, name: "Menu L'Avocado", description: "Crème d'avocat, citron, feta, crudités au choix, dans un wrap berliner", price: "16,80 €", image: "https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&q=80" },
-    { id: 3, name: "Menu Le Curry", description: "Escalope de poulet sauce curry douce, cheddar, frites maison, crudités, pain moelleux", price: "15,00 €", image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=400&q=80" },
-    { id: 4, name: "Menu Le Tandoori", description: "Grande portion de poulet épicé tandoori, cheddar, sauce au choix, crudités, pain maison", price: "15,00 €", image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=80" },
-    { id: 5, name: "Menu Le Valkyrie", description: "Double viande, sauce signature, oignons caramélisés, cheddar fondu", price: "14,50 €", image: "https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&q=80" },
-  ],
-  burgers: [
-    { id: 6, name: "Menu Le Smash CR7", description: "Smash burger avec steak juteux, bacon halal, poulet crispy, poivrons", price: "15,50 €", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80", popular: true },
-    { id: 7, name: "Menu Le Classic", description: "Steak haché frais, salade, tomate, oignons, sauce burger maison", price: "12,50 €", image: "https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&q=80" },
-    { id: 8, name: "Menu Le Cheese", description: "Double steak, double cheddar, oignons caramélisés, sauce spéciale", price: "14,00 €", image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&q=80" },
-    { id: 9, name: "Menu Le Chicken", description: "Filet de poulet pané croustillant, salade iceberg, mayo maison", price: "13,00 €", image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=400&q=80" },
-  ],
-  tacos: [
-    { id: 10, name: "Tacos Simple", description: "1 viande au choix, frites, sauce fromagère, crudités", price: "8,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400" },
-    { id: 11, name: "Tacos Double", description: "2 viandes au choix, frites, sauce fromagère, crudités", price: "10,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400", popular: true },
-    { id: 12, name: "Tacos Triple", description: "3 viandes au choix, frites, sauce fromagère, crudités", price: "12,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400" },
-    { id: 13, name: "Tacos Géant", description: "4 viandes, double portion frites, extra fromage", price: "14,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400" },
-  ],
-  bowls: [
-    { id: 14, name: "Bowl Poulet", description: "Riz, poulet grillé, légumes frais, sauce au choix", price: "11,00 €", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80" },
-    { id: 15, name: "Bowl Végétarien", description: "Riz, falafels maison, houmous, légumes grillés, sauce tahini", price: "10,50 €", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80" },
-    { id: 16, name: "Bowl Mixte", description: "Riz, viande kebab, poulet, crudités, sauces variées", price: "13,00 €", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80", popular: true },
-  ],
-  frites: [
-    { id: 17, name: "Frites Barquette L", description: "Généreuse portion de frites dorées, idéal à partager", price: "3,50 €", image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80" },
-    { id: 18, name: "Frites Barquette XL", description: "Extra-large portion de frites classiques", price: "5,50 €", image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80", popular: true },
-    { id: 19, name: "Frites Sauce", description: "Frites avec sauce au choix (andalouse, samouraï, algérienne)", price: "4,50 €", image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80" },
-    { id: 20, name: "Potatoes", description: "Quartiers de pommes de terre épicées et croustillantes", price: "4,00 €", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80" },
-  ],
-  boissons: [
-    { id: 21, name: "Coca-Cola 33cl", description: "Canette fraîche", price: "2,00 €", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&q=80" },
-    { id: 22, name: "Coca-Cola 50cl", description: "Bouteille fraîche", price: "3,00 €", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&q=80" },
-    { id: 23, name: "Sprite / Fanta 33cl", description: "Canette fraîche au choix", price: "2,00 €", image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80" },
-    { id: 24, name: "Eau Minérale 50cl", description: "Eau plate ou gazeuse", price: "1,50 €", image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80" },
-    { id: 25, name: "Jus de Fruits", description: "Orange, Pomme ou Tropical", price: "2,50 €", image: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80" },
-  ],
-};
+// Kebabs Menu
+const KEBABS_MENU = [
+  { id: 1, name: "Menu Le Basique", description: "Kebab de poulet mariné aux 4 épices, cuit à la flamme de pierre de lave, pain frais maison", price: "11,80 €", image: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80", popular: true },
+  { id: 2, name: "Menu L'Avocado", description: "Crème d'avocat, citron, feta, crudités au choix, dans un wrap berliner", price: "16,80 €", image: "https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&q=80", popular: false },
+  { id: 3, name: "Menu Le Curry", description: "Escalope de poulet sauce curry douce, cheddar, frites maison, crudités", price: "15,00 €", image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=400&q=80", popular: false },
+  { id: 4, name: "Menu Le Tandoori", description: "Grande portion de poulet épicé tandoori, cheddar, sauce au choix", price: "15,00 €", image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=80", popular: false },
+  { id: 5, name: "Menu Le Valkyrie", description: "Double viande, sauce signature, oignons caramélisés, cheddar fondu", price: "14,50 €", image: "https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&q=80", popular: false },
+];
+
+// Burgers Menu
+const BURGERS_MENU = [
+  { id: 6, name: "Menu Le Smash CR7", description: "Smash burger avec steak juteux, bacon halal, poulet crispy, poivrons", price: "15,50 €", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80", popular: true },
+  { id: 7, name: "Menu Le Classic", description: "Steak haché frais, salade, tomate, oignons, sauce burger maison", price: "12,50 €", image: "https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&q=80", popular: false },
+  { id: 8, name: "Menu Le Cheese", description: "Double steak, double cheddar, oignons caramélisés, sauce spéciale", price: "14,00 €", image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&q=80", popular: false },
+  { id: 9, name: "Menu Le Chicken", description: "Filet de poulet pané croustillant, salade iceberg, mayo maison", price: "13,00 €", image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=400&q=80", popular: false },
+];
+
+// Tacos Menu
+const TACOS_MENU = [
+  { id: 10, name: "Tacos Simple", description: "1 viande au choix, frites, sauce fromagère, crudités", price: "8,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400", popular: false },
+  { id: 11, name: "Tacos Double", description: "2 viandes au choix, frites, sauce fromagère, crudités", price: "10,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400", popular: true },
+  { id: 12, name: "Tacos Triple", description: "3 viandes au choix, frites, sauce fromagère, crudités", price: "12,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400", popular: false },
+  { id: 13, name: "Tacos Géant", description: "4 viandes, double portion frites, extra fromage", price: "14,50 €", image: "https://images.pexels.com/photos/8230030/pexels-photo-8230030.jpeg?w=400", popular: false },
+];
+
+// Bowls Menu
+const BOWLS_MENU = [
+  { id: 14, name: "Bowl Poulet", description: "Riz, poulet grillé, légumes frais, sauce au choix", price: "11,00 €", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80", popular: false },
+  { id: 15, name: "Bowl Végétarien", description: "Riz, falafels maison, houmous, légumes grillés, sauce tahini", price: "10,50 €", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80", popular: false },
+  { id: 16, name: "Bowl Mixte", description: "Riz, viande kebab, poulet, crudités, sauces variées", price: "13,00 €", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80", popular: true },
+];
+
+// Frites Menu
+const FRITES_MENU = [
+  { id: 17, name: "Frites Barquette L", description: "Généreuse portion de frites dorées, idéal à partager", price: "3,50 €", image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80", popular: false },
+  { id: 18, name: "Frites Barquette XL", description: "Extra-large portion de frites classiques", price: "5,50 €", image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80", popular: true },
+  { id: 19, name: "Frites Sauce", description: "Frites avec sauce au choix (andalouse, samouraï, algérienne)", price: "4,50 €", image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80", popular: false },
+  { id: 20, name: "Potatoes", description: "Quartiers de pommes de terre épicées et croustillantes", price: "4,00 €", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80", popular: false },
+];
+
+// Boissons Menu
+const BOISSONS_MENU = [
+  { id: 21, name: "Coca-Cola 33cl", description: "Canette fraîche", price: "2,00 €", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&q=80", popular: false },
+  { id: 22, name: "Coca-Cola 50cl", description: "Bouteille fraîche", price: "3,00 €", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&q=80", popular: false },
+  { id: 23, name: "Sprite / Fanta 33cl", description: "Canette fraîche au choix", price: "2,00 €", image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80", popular: false },
+  { id: 24, name: "Eau Minérale 50cl", description: "Eau plate ou gazeuse", price: "1,50 €", image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80", popular: false },
+  { id: 25, name: "Jus de Fruits", description: "Orange, Pomme ou Tropical", price: "2,50 €", image: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80", popular: false },
+];
+
+// Get menu by category
+function getMenuByCategory(categoryId) {
+  switch (categoryId) {
+    case "kebabs": return KEBABS_MENU;
+    case "burgers": return BURGERS_MENU;
+    case "tacos": return TACOS_MENU;
+    case "bowls": return BOWLS_MENU;
+    case "frites": return FRITES_MENU;
+    case "boissons": return BOISSONS_MENU;
+    default: return [];
+  }
+}
 
 // Header Component
-const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
+function Header({ mobileMenuOpen, setMobileMenuOpen }) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#1A1A1A] shadow-lg">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -88,20 +108,19 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
             <Utensils className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl md:text-2xl text-white tracking-wider">KEBAB HUT</h1>
+            <h1 className="text-xl md:text-2xl text-white tracking-wider">{RESTAURANT_NAME.toUpperCase()}</h1>
             <p className="text-xs text-[#FFD700]">La Rochelle</p>
           </div>
         </div>
         
-        {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
-          <a href={RESTAURANT_INFO.phoneLink} data-testid="header-call-btn">
+          <a href={PHONE_LINK} data-testid="header-call-btn">
             <Button className="bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2">
               <Phone className="w-4 h-4" />
               Appeler
             </Button>
           </a>
-          <a href={RESTAURANT_INFO.googleMapsLink} target="_blank" rel="noopener noreferrer" data-testid="header-directions-btn">
+          <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" data-testid="header-directions-btn">
             <Button variant="outline" className="border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black gap-2">
               <MapPin className="w-4 h-4" />
               Itinéraire
@@ -109,7 +128,6 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
           </a>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <button 
           className="md:hidden text-white p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -119,16 +137,15 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#262626] px-4 py-4 space-y-3">
-          <a href={RESTAURANT_INFO.phoneLink} className="block" data-testid="mobile-call-btn">
+          <a href={PHONE_LINK} className="block" data-testid="mobile-call-btn">
             <Button className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2 text-lg py-6">
               <Phone className="w-5 h-5" />
               Appeler pour Commander
             </Button>
           </a>
-          <a href={RESTAURANT_INFO.googleMapsLink} target="_blank" rel="noopener noreferrer" className="block" data-testid="mobile-directions-btn">
+          <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="block" data-testid="mobile-directions-btn">
             <Button variant="outline" className="w-full border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black gap-2 text-lg py-6">
               <MapPin className="w-5 h-5" />
               Itinéraire
@@ -138,14 +155,14 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
       )}
     </header>
   );
-};
+}
 
 // Hero Section
-const HeroSection = () => {
+function HeroSection() {
   return (
     <section 
       className="hero-section flex items-center justify-center pt-20"
-      style={{ backgroundImage: `url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1920&q=80')` }}
+      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1920&q=80')" }}
       data-testid="hero-section"
     >
       <div className="hero-overlay"></div>
@@ -159,15 +176,15 @@ const HeroSection = () => {
           KEBAB HUT
         </h1>
         <p className="text-xl md:text-2xl text-[#FFD700] mb-2 font-medium">
-          {RESTAURANT_INFO.tagline}
+          {RESTAURANT_TAGLINE}
         </p>
         <p className="text-gray-300 mb-8 flex items-center justify-center gap-2">
           <MapPin className="w-4 h-4" />
-          {RESTAURANT_INFO.address}
+          {RESTAURANT_ADDRESS}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href={RESTAURANT_INFO.phoneLink} data-testid="hero-order-btn">
+          <a href={PHONE_LINK} data-testid="hero-order-btn">
             <Button className="action-btn bg-[#FF6B00] hover:bg-[#E65100] text-white text-lg px-8 py-6 rounded-full gap-2 font-semibold shadow-lg">
               <Phone className="w-5 h-5" />
               COMMANDER MAINTENANT
@@ -183,61 +200,56 @@ const HeroSection = () => {
 
         <div className="mt-12 flex items-center justify-center gap-6 text-white">
           <div className="text-center">
-            <p className="text-3xl font-bold text-[#FFD700]">{RESTAURANT_INFO.rating}</p>
-            <p className="text-sm text-gray-300">{RESTAURANT_INFO.reviews} avis</p>
+            <p className="text-3xl font-bold text-[#FFD700]">{RATING}</p>
+            <p className="text-sm text-gray-300">{REVIEWS} avis</p>
           </div>
           <div className="w-px h-12 bg-gray-600"></div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-[#FFD700]">{RESTAURANT_INFO.priceRange}</p>
+            <p className="text-3xl font-bold text-[#FFD700]">{PRICE_RANGE}</p>
             <p className="text-sm text-gray-300">par personne</p>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}
 
 // Category Navigation
-const CategoryNav = ({ activeCategory, setActiveCategory, menuRef }) => {
+function CategoryNav({ activeCategory, setActiveCategory }) {
   const scrollToCategory = (categoryId) => {
     setActiveCategory(categoryId);
-    const element = document.getElementById(`category-${categoryId}`);
+    const element = document.getElementById("category-" + categoryId);
     if (element) {
       const headerOffset = 140;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
 
   return (
     <div className="sticky top-[72px] z-40 bg-white shadow-md py-3" data-testid="category-nav">
-      <ScrollArea className="w-full">
-        <div className="flex gap-2 px-4 max-w-7xl mx-auto">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => scrollToCategory(category.id)}
-              className={`category-pill px-5 py-2 rounded-full font-medium text-sm flex items-center gap-2 ${
-                activeCategory === category.id ? 'active' : ''
-              }`}
-              data-testid={`category-${category.id}`}
-            >
-              <span>{category.icon}</span>
-              {category.name}
-            </button>
-          ))}
-        </div>
-        <ScrollBar orientation="horizontal" />
-      </ScrollArea>
+      <div className="category-nav flex gap-2 px-4 max-w-7xl mx-auto overflow-x-auto">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => scrollToCategory(cat.id)}
+            className={"category-pill px-5 py-2 rounded-full font-medium text-sm flex items-center gap-2 " + (activeCategory === cat.id ? "active" : "")}
+            data-testid={"category-" + cat.id}
+          >
+            <span>{cat.icon}</span>
+            {cat.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 // Menu Item Card
-const MenuItemCard = ({ item }) => {
+function MenuItemCard({ item }) {
   return (
-    <Card className="menu-card overflow-hidden border-0 shadow-md" data-testid={`menu-item-${item.id}`}>
+    <Card className="menu-card overflow-hidden border-0 shadow-md" data-testid={"menu-item-" + item.id}>
       <div className="relative">
         <img
           src={item.image}
@@ -260,39 +272,42 @@ const MenuItemCard = ({ item }) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 // Menu Section
-const MenuSection = ({ menuRef }) => {
+function MenuSection() {
   return (
-    <section id="menu" className="py-12 md:py-20 bg-[#F9FAFB]" ref={menuRef} data-testid="menu-section">
+    <section id="menu" className="py-12 md:py-20 bg-[#F9FAFB]" data-testid="menu-section">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="section-header text-4xl md:text-5xl mb-4">NOTRE CARTE</h2>
           <p className="text-[#6B7280] mt-6">Kebabs, burgers, tacos, bowls - tout est préparé avec des produits frais</p>
         </div>
 
-        {CATEGORIES.map((category) => (
-          <div key={category.id} id={`category-${category.id}`} className="mb-12">
-            <h3 className="text-2xl md:text-3xl mb-6 flex items-center gap-3">
-              <span className="text-3xl">{category.icon}</span>
-              {category.name}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {MENU_ITEMS[category.id]?.map((item) => (
-                <MenuItemCard key={item.id} item={item} />
-              ))}
+        {CATEGORIES.map((cat) => {
+          const items = getMenuByCategory(cat.id);
+          return (
+            <div key={cat.id} id={"category-" + cat.id} className="mb-12">
+              <h3 className="text-2xl md:text-3xl mb-6 flex items-center gap-3">
+                <span className="text-3xl">{cat.icon}</span>
+                {cat.name}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {items.map((item) => (
+                  <MenuItemCard key={item.id} item={item} />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
-};
+}
 
 // Info Section
-const InfoSection = () => {
-  const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long' });
+function InfoSection() {
+  const today = new Date().toLocaleDateString("fr-FR", { weekday: "long" });
   const capitalizedToday = today.charAt(0).toUpperCase() + today.slice(1);
 
   return (
@@ -303,7 +318,6 @@ const InfoSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Address Card */}
           <div className="info-card p-6">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 bg-[#FFF7ED] rounded-full flex items-center justify-center">
@@ -311,8 +325,8 @@ const InfoSection = () => {
               </div>
               <h3 className="text-xl font-bold">Adresse</h3>
             </div>
-            <p className="text-[#6B7280] mb-4">{RESTAURANT_INFO.address}</p>
-            <a href={RESTAURANT_INFO.googleMapsLink} target="_blank" rel="noopener noreferrer" data-testid="info-directions-btn">
+            <p className="text-[#6B7280] mb-4">{RESTAURANT_ADDRESS}</p>
+            <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" data-testid="info-directions-btn">
               <Button className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2">
                 <MapPin className="w-4 h-4" />
                 Voir l'itinéraire
@@ -320,7 +334,6 @@ const InfoSection = () => {
             </a>
           </div>
 
-          {/* Phone Card */}
           <div className="info-card p-6">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 bg-[#FFF7ED] rounded-full flex items-center justify-center">
@@ -328,8 +341,8 @@ const InfoSection = () => {
               </div>
               <h3 className="text-xl font-bold">Téléphone</h3>
             </div>
-            <p className="text-[#6B7280] mb-4">{RESTAURANT_INFO.phone}</p>
-            <a href={RESTAURANT_INFO.phoneLink} data-testid="info-call-btn">
+            <p className="text-[#6B7280] mb-4">{RESTAURANT_PHONE}</p>
+            <a href={PHONE_LINK} data-testid="info-call-btn">
               <Button className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2">
                 <Phone className="w-4 h-4" />
                 Appeler
@@ -337,7 +350,6 @@ const InfoSection = () => {
             </a>
           </div>
 
-          {/* Hours Card */}
           <div className="info-card p-6">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 bg-[#FFF7ED] rounded-full flex items-center justify-center">
@@ -346,10 +358,10 @@ const InfoSection = () => {
               <h3 className="text-xl font-bold">Horaires</h3>
             </div>
             <div className="space-y-2 text-sm">
-              {RESTAURANT_INFO.schedule.map((item) => (
+              {SCHEDULE.map((item) => (
                 <div 
                   key={item.day} 
-                  className={`flex justify-between ${item.day === capitalizedToday ? 'text-[#FF6B00] font-bold' : 'text-[#6B7280]'}`}
+                  className={"flex justify-between " + (item.day === capitalizedToday ? "text-[#FF6B00] font-bold" : "text-[#6B7280]")}
                 >
                   <span>{item.day}</span>
                   <span>{item.hours}</span>
@@ -361,10 +373,10 @@ const InfoSection = () => {
       </div>
     </section>
   );
-};
+}
 
 // Footer
-const Footer = () => {
+function Footer() {
   return (
     <footer className="bg-[#1A1A1A] text-white py-8" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4">
@@ -407,13 +419,13 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
-// Floating CTA (Mobile)
-const FloatingCTA = () => {
+// Floating CTA
+function FloatingCTA() {
   return (
     <div className="fixed bottom-6 left-4 right-4 z-50 md:hidden" data-testid="floating-cta">
-      <a href={RESTAURANT_INFO.phoneLink}>
+      <a href={PHONE_LINK}>
         <Button className="floating-cta w-full bg-[#FF6B00] hover:bg-[#E65100] text-white text-lg py-6 rounded-full gap-2 font-bold shadow-xl">
           <Phone className="w-6 h-6" />
           COMMANDER
@@ -421,13 +433,12 @@ const FloatingCTA = () => {
       </a>
     </div>
   );
-};
+}
 
 // Main App
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("kebabs");
-  const menuRef = useRef(null);
 
   return (
     <div className="min-h-screen">
@@ -437,9 +448,8 @@ function App() {
         <CategoryNav 
           activeCategory={activeCategory} 
           setActiveCategory={setActiveCategory}
-          menuRef={menuRef}
         />
-        <MenuSection menuRef={menuRef} />
+        <MenuSection />
         <InfoSection />
       </main>
       <Footer />
