@@ -48,6 +48,7 @@ app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 class UserCreate(BaseModel):
     email: str
     password: str
+    secret_code: str
 
 class UserLogin(BaseModel):
     email: str
