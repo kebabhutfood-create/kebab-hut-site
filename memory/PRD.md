@@ -1,54 +1,58 @@
-# Kebab Hut - Site Web Restaurant
+# Kebab Hut - Site Web Restaurant avec Admin
 
 ## Énoncé du Problème
-Créer un site internet simple, rapide et efficace pour le restaurant Kebab Hut situé à La Rochelle (7 Rue Verdière, 17000). Le site doit permettre aux clients d'accéder très facilement au menu pour faciliter la prise de commandes.
+Créer un site internet pour le restaurant Kebab Hut à La Rochelle avec un fond noir et un système d'administration pour modifier les photos, prix, noms et descriptions des produits.
 
 ## Architecture
-- **Frontend**: React.js avec Tailwind CSS
-- **Type**: Site vitrine / Landing page (pas de backend nécessaire)
-- **Design**: Mobile-first, couleurs orange/jaune/noir/blanc
-
-## Personas Utilisateurs
-1. **Client local**: Cherche à commander rapidement via téléphone
-2. **Nouveau client**: Découvre le menu et les infos du restaurant
-3. **Livreur**: Besoin de l'adresse et téléphone rapidement
+- **Frontend**: React.js avec Tailwind CSS (thème noir)
+- **Backend**: FastAPI avec MongoDB
+- **Auth**: JWT avec email/mot de passe
+- **Storage**: Upload d'images local (/uploads)
 
 ## Fonctionnalités Implémentées (Février 2025)
-- [x] Hero section avec image de fond et CTA
-- [x] Navigation fixe avec logo et boutons d'action
-- [x] Menu complet avec 6 catégories (Kebabs, Burgers, Tacos, Bowls, Frites, Boissons)
-- [x] 25 articles de menu avec prix, descriptions, images
+
+### Site Public
+- [x] Hero section avec fond noir
+- [x] Menu dynamique chargé depuis MongoDB
+- [x] 6 catégories (Kebabs, Burgers, Tacos, Bowls, Frites, Boissons)
+- [x] Navigation par catégories (sticky)
 - [x] Badge "Populaire" sur les best-sellers
-- [x] Navigation par catégories (sticky, scrollable)
-- [x] Section Infos pratiques (adresse, téléphone, horaires)
-- [x] Jour actuel mis en surbrillance dans les horaires
-- [x] Bouton Commander → appel téléphonique (tel:+33983510117)
-- [x] Bouton Itinéraire → Google Maps
+- [x] Infos pratiques (adresse, téléphone, horaires)
+- [x] Boutons Commander (tel:), Itinéraire (Google Maps)
 - [x] Design responsive mobile-first
-- [x] Bouton flottant "Commander" sur mobile
-- [x] Menu hamburger sur mobile
-- [x] Footer avec liens réseaux sociaux
+- [x] Bouton flottant sur mobile
 
-## Backlog P0/P1/P2
+### Panneau Admin (/admin)
+- [x] Authentification email/mot de passe
+- [x] Inscription de nouveaux admins
+- [x] Initialisation du menu par défaut
+- [x] Ajout de produits avec upload photo
+- [x] Modification de produits (nom, description, prix, image, populaire)
+- [x] Suppression de produits
+- [x] Changement de catégorie
+- [x] Déconnexion
 
-### P0 (Critique) - ✅ Terminé
-- Menu accessible
-- Bouton Commander fonctionnel
-- Responsive mobile
+## Endpoints API
+- POST /api/auth/register - Inscription
+- POST /api/auth/login - Connexion
+- GET /api/auth/me - Utilisateur courant
+- GET /api/menu - Liste des produits (public)
+- GET /api/categories - Liste des catégories
+- POST /api/admin/menu - Ajouter produit
+- PUT /api/admin/menu/{id} - Modifier produit
+- DELETE /api/admin/menu/{id} - Supprimer produit
+- POST /api/admin/upload - Upload image
+- POST /api/admin/init-menu - Initialiser menu par défaut
 
-### P1 (Important) - À faire
-- Intégration vraies photos des plats
-- Liens Facebook/Instagram réels du restaurant
-- Ajout du logo officiel Kebab Hut
-
-### P2 (Amélioration)
-- Mode sombre
-- Animations de scroll plus fluides
-- SEO optimization (meta tags)
-- Intégration avis Google
+## Accès Admin
+- URL: /admin
+- Créer un compte avec email/mot de passe
+- Puis se connecter
 
 ## Prochaines Actions
-1. Remplacer les images par les vraies photos des plats
-2. Ajouter les vrais liens réseaux sociaux du restaurant
-3. Intégrer le logo officiel Kebab Hut
-4. Considérer l'intégration d'un système de commande en ligne (Uber Eats redirect)
+1. Ajouter vos vraies photos de plats via l'admin
+2. Configurer les vrais liens Facebook/Instagram
+3. Ajouter le logo officiel Kebab Hut
+4. Optionnel: Intégrer commande Uber Eats
+
+© 2025 Kebab Hut La Rochelle
