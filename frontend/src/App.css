@@ -1,4 +1,12 @@
-/* Kebab Hut Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* Kebab Hut Custom Styles - Dark Theme */
+
+/* Font classes */
+.font-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+}
 
 /* Hero Section */
 .hero-section {
@@ -12,7 +20,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.9));
+  background: linear-gradient(to bottom, rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 0.95));
 }
 
 /* Category Navigation */
@@ -41,8 +49,13 @@
 }
 
 .category-pill:not(.active) {
-  background-color: #F3F4F6;
-  color: #1A1A1A;
+  background-color: #262626;
+  color: #9CA3AF;
+}
+
+.category-pill:not(.active):hover {
+  background-color: #333;
+  color: white;
 }
 
 /* Menu Items */
@@ -52,7 +65,7 @@
 
 .menu-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px -5px rgba(255, 107, 0, 0.15);
+  box-shadow: 0 10px 25px -5px rgba(255, 107, 0, 0.2);
 }
 
 /* Action Buttons */
@@ -98,7 +111,6 @@
 /* Section Headers */
 .section-header {
   font-family: 'Bebas Neue', sans-serif;
-  color: #1A1A1A;
   position: relative;
   display: inline-block;
 }
@@ -107,7 +119,8 @@
   content: '';
   position: absolute;
   bottom: -4px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: 4px;
   background-color: #FF6B00;
@@ -116,20 +129,17 @@
 
 /* Info Card */
 .info-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .info-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(255, 107, 0, 0.1);
 }
 
 /* Image loading animation */
 .img-loading {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, #1a1a1a 25%, #262626 50%, #1a1a1a 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -141,4 +151,23 @@
   100% {
     background-position: 200% 0;
   }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF6B00;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E65100;
 }
