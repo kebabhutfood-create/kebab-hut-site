@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-02-04T21:58:17.238883",
+  "total_tests": 10,
+  "passed_tests": 10,
+  "success_rate": 100.0,
+  "test_details": [
+    {
+      "test": "Auth - Register New User",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:16.602057"
+    },
+    {
+      "test": "Auth - Login Existing User",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:16.867065"
+    },
+    {
+      "test": "Auth - Get Current User",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:16.908634"
+    },
+    {
+      "test": "Menu - Get All Items (Public)",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:16.945653"
+    },
+    {
+      "test": "Categories - Get All (Public)",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:16.984194"
+    },
+    {
+      "test": "Admin - Initialize Default Menu",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:17.075437"
+    },
+    {
+      "test": "Admin - Create Menu Item",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:17.118461"
+    },
+    {
+      "test": "Admin - Update Menu Item",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:17.159850"
+    },
+    {
+      "test": "Admin - Delete Menu Item",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-02-04T21:58:17.193955"
+    },
+    {
+      "test": "Admin - Upload Endpoint Check",
+      "success": true,
+      "details": "Status: 422",
+      "timestamp": "2026-02-04T21:58:17.238155"
+    }
+  ]
+}
