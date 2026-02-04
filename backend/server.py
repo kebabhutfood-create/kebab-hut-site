@@ -120,6 +120,11 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
 # Auth Routes
 @api_router.post("/auth/register", response_model=Token)
 async def register(user: UserCreate):
+    # Verify secret code
+    admin_secret = os.environ.get('ADMIN_SECRET_CODE', 'KEBAB2025')
+    if user.secret_code != admin_secret:
+        raise HTTPException(status_code=403, detail="Code secret incorrect")
+    
     existing = await db.users.find_one({"email": user.email})
     if existing:
         raise HTTPException(status_code=400, detail="Email déjà utilisé")
