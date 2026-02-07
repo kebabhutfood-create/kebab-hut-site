@@ -258,7 +258,7 @@ function MenuItemCard({ item }) {
           loading="lazy"
         />
         {item.popular && (
-          <span className="absolute top-3 right-3 bg-[#FF6B00] text-white text-xs px-3 py-1 rounded-full font-semibold">
+          <span className="absolute top-3 right-3 bg-[#FFD700] text-black text-xs px-3 py-1 rounded-full font-semibold">
             Populaire
           </span>
         )}
@@ -326,14 +326,14 @@ function InfoSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="info-card p-6 bg-[#262626] rounded-xl">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 bg-[#FF6B00]/20 rounded-full flex items-center justify-center">
-                <MapPin className="w-7 h-7 text-[#FF6B00]" />
+              <div className="w-14 h-14 bg-[#FFD700]/20 rounded-full flex items-center justify-center">
+                <MapPin className="w-7 h-7 text-[#FFD700]" />
               </div>
               <h3 className="text-xl font-bold text-white">Adresse</h3>
             </div>
             <p className="text-gray-400 mb-4">{RESTAURANT_ADDRESS}</p>
             <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" data-testid="info-directions-btn">
-              <Button className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2">
+              <Button className="w-full bg-[#FFD700] hover:bg-[#FFC107] text-black gap-2">
                 <MapPin className="w-4 h-4" />
                 Voir l'itinéraire
               </Button>
@@ -342,14 +342,14 @@ function InfoSection() {
 
           <div className="info-card p-6 bg-[#262626] rounded-xl">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 bg-[#FF6B00]/20 rounded-full flex items-center justify-center">
-                <Phone className="w-7 h-7 text-[#FF6B00]" />
+              <div className="w-14 h-14 bg-[#FFD700]/20 rounded-full flex items-center justify-center">
+                <Phone className="w-7 h-7 text-[#FFD700]" />
               </div>
               <h3 className="text-xl font-bold text-white">Téléphone</h3>
             </div>
             <p className="text-gray-400 mb-4">{RESTAURANT_PHONE}</p>
             <a href={PHONE_LINK} data-testid="info-call-btn">
-              <Button className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2">
+              <Button className="w-full bg-[#FFD700] hover:bg-[#FFC107] text-black gap-2">
                 <Phone className="w-4 h-4" />
                 Appeler
               </Button>
@@ -358,8 +358,8 @@ function InfoSection() {
 
           <div className="info-card p-6 bg-[#262626] rounded-xl">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 bg-[#FF6B00]/20 rounded-full flex items-center justify-center">
-                <Clock className="w-7 h-7 text-[#FF6B00]" />
+              <div className="w-14 h-14 bg-[#FFD700]/20 rounded-full flex items-center justify-center">
+                <Clock className="w-7 h-7 text-[#FFD700]" />
               </div>
               <h3 className="text-xl font-bold text-white">Horaires</h3>
             </div>
@@ -367,7 +367,7 @@ function InfoSection() {
               {SCHEDULE.map((item) => (
                 <div 
                   key={item.day} 
-                  className={"flex justify-between " + (item.day === capitalizedToday ? "text-[#FF6B00] font-bold" : "text-gray-400")}
+                  className={"flex justify-between " + (item.day === capitalizedToday ? "text-[#FFD700] font-bold" : "text-gray-400")}
                 >
                   <span>{item.day}</span>
                   <span>{item.hours}</span>
