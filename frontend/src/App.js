@@ -532,8 +532,8 @@ function AdminLoginPage() {
       <Card className="w-full max-w-md bg-[#1A1A1A] border-[#262626]">
         <CardContent className="p-8">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-[#FF6B00] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Settings className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-[#FFD700] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Settings className="w-8 h-8 text-black" />
             </div>
             <h1 className="text-2xl font-bold text-white font-heading">ADMIN KEBAB HUT</h1>
             <p className="text-gray-400 mt-2">{isRegister ? "Créer un compte" : "Connexion"}</p>
@@ -584,7 +584,7 @@ function AdminLoginPage() {
             )}
             <Button
               type="submit"
-              className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white py-6"
+              className="w-full bg-[#FFD700] hover:bg-[#FFC107] text-black py-6"
               disabled={loading}
               data-testid="admin-login-btn"
             >
@@ -596,7 +596,7 @@ function AdminLoginPage() {
             <button
               type="button"
               onClick={() => setIsRegister(!isRegister)}
-              className="text-[#FFD700] hover:underline text-sm"
+              className="text-[#FF6B00] hover:underline text-sm"
             >
               {isRegister ? "Déjà un compte ? Se connecter" : "Pas de compte ? S'inscrire"}
             </button>
