@@ -102,24 +102,24 @@ function Header({ mobileMenuOpen, setMobileMenuOpen }) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0D0D] border-b border-[#262626]">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <a href="/" className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-[#FF6B00] rounded-full flex items-center justify-center">
-            <Utensils className="w-6 h-6 text-white" />
+          <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center">
+            <Utensils className="w-6 h-6 text-black" />
           </div>
           <div>
             <h1 className="text-xl md:text-2xl text-white tracking-wider font-heading">{RESTAURANT_NAME.toUpperCase()}</h1>
-            <p className="text-xs text-[#FFD700]">La Rochelle</p>
+            <p className="text-xs text-[#FF6B00]">La Rochelle</p>
           </div>
         </a>
         
         <div className="hidden md:flex items-center gap-3">
           <a href={PHONE_LINK} data-testid="header-call-btn">
-            <Button className="bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2">
+            <Button className="bg-[#FFD700] hover:bg-[#FFC107] text-black gap-2">
               <Phone className="w-4 h-4" />
               Appeler
             </Button>
           </a>
           <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" data-testid="header-directions-btn">
-            <Button variant="outline" className="border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black gap-2">
+            <Button variant="outline" className="border-[#FF6B00] text-[#FF6B00] hover:bg-[#FF6B00] hover:text-white gap-2">
               <MapPin className="w-4 h-4" />
               Itinéraire
             </Button>
@@ -138,13 +138,13 @@ function Header({ mobileMenuOpen, setMobileMenuOpen }) {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#1A1A1A] px-4 py-4 space-y-3">
           <a href={PHONE_LINK} className="block" data-testid="mobile-call-btn">
-            <Button className="w-full bg-[#FF6B00] hover:bg-[#E65100] text-white gap-2 text-lg py-6">
+            <Button className="w-full bg-[#FFD700] hover:bg-[#FFC107] text-black gap-2 text-lg py-6">
               <Phone className="w-5 h-5" />
               Appeler pour Commander
             </Button>
           </a>
           <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="block" data-testid="mobile-directions-btn">
-            <Button variant="outline" className="w-full border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black gap-2 text-lg py-6">
+            <Button variant="outline" className="w-full border-[#FF6B00] text-[#FF6B00] hover:bg-[#FF6B00] hover:text-white gap-2 text-lg py-6">
               <MapPin className="w-5 h-5" />
               Itinéraire
             </Button>
@@ -160,7 +160,7 @@ function HeroSection() {
   return (
     <section 
       className="hero-section flex items-center justify-center pt-20"
-      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1920&q=80')" }}
+      style={{ backgroundImage: "url('https://customer-assets.emergentagent.com/job_larochelle-kebab/artifacts/78l8a55e_image.png')" }}
       data-testid="hero-section"
     >
       <div className="hero-overlay"></div>
