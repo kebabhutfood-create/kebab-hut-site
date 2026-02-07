@@ -166,7 +166,7 @@ function HeroSection() {
       <div className="hero-overlay"></div>
       <div className="relative z-10 text-center px-4 py-20 md:py-32">
         <div className="mb-6">
-          <span className="inline-block bg-[#FFD700] text-black px-4 py-1 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block bg-[#FF6B00] text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
             100% Halal • Produits Frais
           </span>
         </div>
@@ -183,7 +183,7 @@ function HeroSection() {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href={PHONE_LINK} data-testid="hero-order-btn">
-            <Button className="action-btn bg-[#FF6B00] hover:bg-[#E65100] text-white text-lg px-8 py-6 rounded-full gap-2 font-semibold shadow-lg">
+            <Button className="action-btn bg-[#FFD700] hover:bg-[#FFC107] text-black text-lg px-8 py-6 rounded-full gap-2 font-semibold shadow-lg">
               <Phone className="w-5 h-5" />
               COMMANDER MAINTENANT
             </Button>
