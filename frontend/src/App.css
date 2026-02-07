@@ -65,7 +65,7 @@
 
 .menu-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px -5px rgba(255, 107, 0, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.2);
 }
 
 /* Action Buttons */
@@ -134,7 +134,7 @@
 
 .info-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(255, 107, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(255, 215, 0, 0.1);
 }
 
 /* Image loading animation */
@@ -164,10 +164,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FF6B00;
+  background: #FFD700;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E65100;
+  background: #FFC107;
 }
