@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kebab Hut La Rochelle - Le meilleur kebab de La Rochelle. Kebabs, burgers, tacos, bowls. Livraison et à emporter.">
+    <meta name="keywords" content="kebab, burger, tacos, la rochelle, livraison, halal">
+    <meta name="author" content="Kebab Hut">
+    
+    <!-- Open Graph pour partage réseaux sociaux -->
+    <meta property="og:title" content="Kebab Hut - La Rochelle">
+    <meta property="og:description" content="Le meilleur kebab de La Rochelle. Kebabs, burgers, tacos, bowls.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://kebabhut.fr">
+    
+    <title>Kebab Hut - La Rochelle | Kebabs, Burgers, Tacos</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ========================================
+         HEADER / NAVIGATION
+         ======================================== -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍴</div>
+                <div class="logo-text">
+                    <h1>KEBAB HUT</h1>
+                    <span>La Rochelle</span>
+                </div>
+            </a>
+            
+            <!-- Navigation Desktop -->
+            <nav class="nav-desktop">
+                <a href="tel:+33983510117" class="btn btn-primary">
+                    📞 Appeler
+                </a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=7+Rue+Verdiere,+17000+La+Rochelle" target="_blank" class="btn btn-outline">
+                    📍 Itinéraire
+                </a>
+            </nav>
+
+            <!-- Bouton Menu Mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+        </div>
+
+        <!-- Navigation Mobile -->
+        <nav class="nav-mobile" id="navMobile">
+            <a href="tel:+33983510117" class="btn btn-primary btn-large">
+                📞 Appeler pour Commander
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=7+Rue+Verdiere,+17000+La+Rochelle" target="_blank" class="btn btn-outline btn-large">
+                📍 Itinéraire
+            </a>
+        </nav>
+    </header>
+
+    <!-- ========================================
+         HERO / ACCUEIL
+         ======================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">100% Halal • Produits Frais</span>
+            <h1 class="hero-title">KEBAB HUT</h1>
+            <p class="hero-subtitle">Le Meilleur Kebab de La Rochelle</p>
+            <p class="hero-address">📍 7 Rue Verdière, 17000 La Rochelle</p>
+            
+            <div class="hero-buttons">
+                <a href="tel:+33983510117" class="btn btn-primary btn-large">
+                    📞 COMMANDER MAINTENANT
+                </a>
+                <a href="#menu" class="btn btn-white btn-large">
+                    Voir le Menu →
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4.7</span>
+                    <span class="stat-label">686 avis</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">1-10 €</span>
+                    <span class="stat-label">par personne</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CATEGORIES
+         ======================================== -->
+    <section class="categories" id="categories">
+        <div class="categories-scroll">
+            <button class="category-btn active" data-category="kebabs">🥙 Kebabs</button>
+            <button class="category-btn" data-category="burgers">🍔 Burgers</button>
+            <button class="category-btn" data-category="tacos">🌮 Tacos</button>
+            <button class="category-btn" data-category="bowls">🥗 Bowls</button>
+            <button class="category-btn" data-category="frites">🍟 Frites</button>
+            <button class="category-btn" data-category="boissons">🥤 Boissons</button>
+        </div>
+    </section>
+
+    <!-- ========================================
+         MENU
+         ======================================== -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">NOTRE CARTE</h2>
+            <p class="section-subtitle">Kebabs, burgers, tacos, bowls - tout est préparé avec des produits frais</p>
+            
+            <!-- Kebabs -->
+            <div class="menu-category" id="category-kebabs">
+                <h3><span>🥙</span> Kebabs</h3>
+                <div class="menu-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/kebab-basique.jpg" alt="Menu Le Basique" loading="lazy">
+                            <span class="product-badge">Populaire</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Basique</span>
+                                <span class="product-price">11,80 €</span>
+                            </div>
+                            <p class="product-description">Kebab de poulet mariné aux 4 épices, cuit à la flamme de pierre de lave, pain frais maison</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/kebab-avocado.jpg" alt="Menu L'Avocado" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu L'Avocado</span>
+                                <span class="product-price">16,80 €</span>
+                            </div>
+                            <p class="product-description">Crème d'avocat, citron, feta, crudités au choix, dans un wrap berliner</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/kebab-curry.jpg" alt="Menu Le Curry" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Curry</span>
+                                <span class="product-price">15,00 €</span>
+                            </div>
+                            <p class="product-description">Escalope de poulet sauce curry douce, cheddar, frites maison, crudités</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/kebab-tandoori.jpg" alt="Menu Le Tandoori" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Tandoori</span>
+                                <span class="product-price">15,00 €</span>
+                            </div>
+                            <p class="product-description">Grande portion de poulet épicé tandoori, cheddar, sauce au choix</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/kebab-valkyrie.jpg" alt="Menu Le Valkyrie" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Valkyrie</span>
+                                <span class="product-price">14,50 €</span>
+                            </div>
+                            <p class="product-description">Double viande, sauce signature, oignons caramélisés, cheddar fondu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burgers -->
+            <div class="menu-category" id="category-burgers">
+                <h3><span>🍔</span> Burgers</h3>
+                <div class="menu-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/burger-cr7.jpg" alt="Menu Le Smash CR7" loading="lazy">
+                            <span class="product-badge">Populaire</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Smash CR7</span>
+                                <span class="product-price">15,50 €</span>
+                            </div>
+                            <p class="product-description">Smash burger avec steak juteux, bacon halal, poulet crispy, poivrons</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/burger-classic.jpg" alt="Menu Le Classic" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Classic</span>
+                                <span class="product-price">12,50 €</span>
+                            </div>
+                            <p class="product-description">Steak haché frais, salade, tomate, oignons, sauce burger maison</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/burger-cheese.jpg" alt="Menu Le Cheese" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Cheese</span>
+                                <span class="product-price">14,00 €</span>
+                            </div>
+                            <p class="product-description">Double steak, double cheddar, oignons caramélisés, sauce spéciale</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/burger-chicken.jpg" alt="Menu Le Chicken" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Menu Le Chicken</span>
+                                <span class="product-price">13,00 €</span>
+                            </div>
+                            <p class="product-description">Filet de poulet pané croustillant, salade iceberg, mayo maison</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tacos -->
+            <div class="menu-category" id="category-tacos">
+                <h3><span>🌮</span> Tacos</h3>
+                <div class="menu-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/tacos.jpg" alt="Tacos Simple" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Tacos Simple</span>
+                                <span class="product-price">8,50 €</span>
+                            </div>
+                            <p class="product-description">1 viande au choix, frites, sauce fromagère, crudités</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/tacos.jpg" alt="Tacos Double" loading="lazy">
+                            <span class="product-badge">Populaire</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Tacos Double</span>
+                                <span class="product-price">10,50 €</span>
+                            </div>
+                            <p class="product-description">2 viandes au choix, frites, sauce fromagère, crudités</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/tacos.jpg" alt="Tacos Triple" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Tacos Triple</span>
+                                <span class="product-price">12,50 €</span>
+                            </div>
+                            <p class="product-description">3 viandes au choix, frites, sauce fromagère, crudités</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/tacos.jpg" alt="Tacos Géant" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Tacos Géant</span>
+                                <span class="product-price">14,50 €</span>
+                            </div>
+                            <p class="product-description">4 viandes, double portion frites, extra fromage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bowls -->
+            <div class="menu-category" id="category-bowls">
+                <h3><span>🥗</span> Bowls</h3>
+                <div class="menu-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/bowl-poulet.jpg" alt="Bowl Poulet" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Bowl Poulet</span>
+                                <span class="product-price">11,00 €</span>
+                            </div>
+                            <p class="product-description">Riz, poulet grillé, légumes frais, sauce au choix</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/bowl-vege.jpg" alt="Bowl Végétarien" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Bowl Végétarien</span>
+                                <span class="product-price">10,50 €</span>
+                            </div>
+                            <p class="product-description">Riz, falafels maison, houmous, légumes grillés, sauce tahini</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/bowl-mixte.jpg" alt="Bowl Mixte" loading="lazy">
+                            <span class="product-badge">Populaire</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Bowl Mixte</span>
+                                <span class="product-price">13,00 €</span>
+                            </div>
+                            <p class="product-description">Riz, viande kebab, poulet, crudités, sauces variées</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frites -->
+            <div class="menu-category" id="category-frites">
+                <h3><span>🍟</span> Frites</h3>
+                <div class="menu-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/frites.jpg" alt="Frites Barquette L" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Frites Barquette L</span>
+                                <span class="product-price">3,50 €</span>
+                            </div>
+                            <p class="product-description">Généreuse portion de frites dorées</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/frites.jpg" alt="Frites Barquette XL" loading="lazy">
+                            <span class="product-badge">Populaire</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Frites Barquette XL</span>
+                                <span class="product-price">5,50 €</span>
+                            </div>
+                            <p class="product-description">Extra-large portion de frites classiques</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/frites.jpg" alt="Frites Sauce" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Frites Sauce</span>
+                                <span class="product-price">4,50 €</span>
+                            </div>
+                            <p class="product-description">Frites avec sauce au choix (andalouse, samouraï, algérienne)</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/potatoes.jpg" alt="Potatoes" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Potatoes</span>
+                                <span class="product-price">4,00 €</span>
+                            </div>
+                            <p class="product-description">Quartiers de pommes de terre épicées et croustillantes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boissons -->
+            <div class="menu-category" id="category-boissons">
+                <h3><span>🥤</span> Boissons</h3>
+                <div class="menu-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/coca.jpg" alt="Coca-Cola 33cl" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Coca-Cola 33cl</span>
+                                <span class="product-price">2,00 €</span>
+                            </div>
+                            <p class="product-description">Canette fraîche</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/coca.jpg" alt="Coca-Cola 50cl" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Coca-Cola 50cl</span>
+                                <span class="product-price">3,00 €</span>
+                            </div>
+                            <p class="product-description">Bouteille fraîche</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/fanta.jpg" alt="Sprite / Fanta 33cl" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Sprite / Fanta 33cl</span>
+                                <span class="product-price">2,00 €</span>
+                            </div>
+                            <p class="product-description">Canette fraîche au choix</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/eau.jpg" alt="Eau Minérale 50cl" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Eau Minérale 50cl</span>
+                                <span class="product-price">1,50 €</span>
+                            </div>
+                            <p class="product-description">Eau plate ou gazeuse</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/jus.jpg" alt="Jus de Fruits" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <span class="product-name">Jus de Fruits</span>
+                                <span class="product-price">2,50 €</span>
+                            </div>
+                            <p class="product-description">Orange, Pomme ou Tropical</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         INFOS PRATIQUES
+         ======================================== -->
+    <section class="info-section" id="infos">
+        <div class="container">
+            <h2 class="section-title">INFOS PRATIQUES</h2>
+            
+            <div class="info-cards">
+                <!-- Adresse -->
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <h3>Adresse</h3>
+                    <p>7 Rue Verdière, 17000 La Rochelle</p>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=7+Rue+Verdiere,+17000+La+Rochelle" target="_blank" class="btn btn-primary">
+                        Voir l'itinéraire
+                    </a>
+                </div>
+
+                <!-- Téléphone -->
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <h3>Téléphone</h3>
+                    <p>09 83 51 01 17</p>
+                    <a href="tel:+33983510117" class="btn btn-primary">
+                        Appeler
+                    </a>
+                </div>
+
+                <!-- Horaires -->
+                <div class="info-card">
+                    <div class="info-icon">🕐</div>
+                    <h3>Horaires</h3>
+                    <div class="horaires" id="horaires">
+                        <div class="horaire-row"><span>Lundi</span><span>11:00-14:30, 17:30-02:30</span></div>
+                        <div class="horaire-row"><span>Mardi</span><span>11:00-14:30, 17:30-02:30</span></div>
+                        <div class="horaire-row"><span>Mercredi</span><span>11:00-14:30, 17:30-02:30</span></div>
+                        <div class="horaire-row"><span>Jeudi</span><span>11:30-14:30, 17:30-02:30</span></div>
+                        <div class="horaire-row"><span>Vendredi</span><span>11:00-15:00, 17:30-02:30</span></div>
+                        <div class="horaire-row"><span>Samedi</span><span>11:00-02:30</span></div>
+                        <div class="horaire-row"><span>Dimanche</span><span>11:00-02:30</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">🍴</div>
+                    <div class="logo-text">
+                        <h3>KEBAB HUT</h3>
+                        <span>La Rochelle</span>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://facebook.com" target="_blank" class="social-link">Facebook</a>
+                    <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
+                </div>
+                
+                <p class="copyright">© 2025 Kebab Hut. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         BOUTON FLOTTANT MOBILE
+         ======================================== -->
+    <div class="floating-btn" id="floatingBtn">
+        <a href="tel:+33983510117" class="btn btn-primary btn-large">
+            📞 COMMANDER
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
