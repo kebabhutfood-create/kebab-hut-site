@@ -1,0 +1,367 @@
+/* ========================================
+   ADMIN - STYLES CSS SUPPLÉMENTAIRES
+   ======================================== */
+
+/* ----- PAGE DE CONNEXION ----- */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--noir);
+}
+
+.login-card {
+    background-color: var(--noir-clair);
+    border: 1px solid var(--gris);
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.login-card h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.login-card > p {
+    color: var(--gris-clair);
+    margin-bottom: 30px;
+}
+
+/* ----- FORMULAIRES ----- */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--blanc);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--gris);
+    border: 1px solid var(--gris);
+    border-radius: 8px;
+    color: var(--blanc);
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--jaune);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--gris-clair);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-group input {
+    width: auto;
+}
+
+.switch-mode {
+    margin-top: 20px;
+}
+
+.switch-mode a {
+    color: var(--orange);
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: var(--gris-clair);
+    font-size: 14px;
+}
+
+/* ----- HEADER ADMIN ----- */
+.admin-header {
+    background-color: var(--noir-clair);
+    border-bottom: 1px solid var(--gris);
+    padding: 15px 20px;
+}
+
+.admin-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-icon {
+    font-size: 32px;
+}
+
+.admin-logo h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.admin-logo span {
+    font-size: 12px;
+    color: var(--gris-clair);
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-danger {
+    background-color: transparent;
+    border: 2px solid #ef4444;
+    color: #ef4444;
+}
+
+.btn-danger:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* ----- CONTENU ADMIN ----- */
+.admin-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.admin-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.admin-toolbar h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ----- CATÉGORIES ADMIN ----- */
+.admin-category {
+    margin-bottom: 40px;
+}
+
+.admin-category h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-category h3 .count {
+    font-size: 14px;
+    color: var(--gris-clair);
+    font-weight: normal;
+}
+
+/* ----- GRILLE PRODUITS ADMIN ----- */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.admin-product-card {
+    background-color: var(--noir-clair);
+    border: 1px solid var(--gris);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admin-product-image {
+    height: 120px;
+    position: relative;
+}
+
+.admin-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-product-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: var(--jaune);
+    color: var(--noir);
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.admin-product-info {
+    padding: 15px;
+}
+
+.admin-product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.admin-product-name {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.admin-product-price {
+    color: var(--jaune);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.admin-product-desc {
+    font-size: 12px;
+    color: var(--gris-clair);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.admin-product-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-product-actions .btn {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.btn-edit {
+    background-color: var(--gris);
+    color: var(--blanc);
+}
+
+.btn-edit:hover {
+    background-color: var(--jaune);
+    color: var(--noir);
+}
+
+.btn-delete {
+    background-color: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+}
+
+.btn-delete:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* ----- MODAL ----- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: var(--noir-clair);
+    border: 1px solid var(--gris);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--gris);
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--blanc);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-content form {
+    padding: 20px;
+}
+
+.image-preview {
+    margin-top: 10px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ----- MESSAGE VIDE ----- */
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--gris-clair);
+}
